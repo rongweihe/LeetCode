@@ -1,1 +1,1 @@
-【single-number】（https://leetcode.com/problems/single-number/） 
+[single-number](https://leetcode.com/problems/single-number/)
