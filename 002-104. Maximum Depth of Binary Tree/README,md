@@ -2,7 +2,8 @@
 把 root 替换成 left 或 right 又会再重复上面的步骤。 递归实现。
 
 代码
-` `` cpp
+
+```c++ 
 class Solution {
 public:
     int maxDepth(TreeNode *root) {
@@ -10,7 +11,8 @@ public:
         return max(maxDepth(root->left), maxDepth(root->right))+1;
     }
 };
-` `` 
+```
+
 
 
 
