@@ -1,0 +1,32 @@
+```c++
+/*
+求区间内两数相乘是平方数的个数
+*/
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+const int N= 1e5+233;
+bool ok(int n)
+{
+    int y=(int)sqrt(n);
+    if(n==y*y) return true;
+    return false;
+}
+long long vis[N];
+int main()
+{
+    int n,m;
+    while(cin>>n>>m)
+    {
+        n=min(n,m);
+        m=max(n,m);
+        int ret=n;
+        memset(vis,0,sizeof(vis));
+        for(int j=2; j<=n; ++j)for(int i=1; i<=(m/n+1); i+=2)vis[(int)pow(j,i)]=1;
+        for(int k=n+1; k<=m; ++k)if(ok(k)) vis[k]=1;
+        for(int k=n+1; k<=m; ++k) if(vis[k]) ret++;
+        cout<<ret<<endl;
+    }
+    return 0;
+}
+```
