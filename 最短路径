@@ -1,0 +1,217 @@
+Sample - Greediness
+http://acm.hdu.edu.cn/showproblem.php?pid=3790
+贪心典型题（2）- 最短路径
+题目描述
+给你n个点，m条无向边，每条边都有长度d和花费p，给你起点s终点t，要求输出起点到终点的最短距离及其花费，如果最短距离有多条路线，则输出花费最少的。
+输入格式
+输入n, m，点的编号是1~n, 然后是m行，每行4个数 a,b,d,p，表示a和b之间有一条边，且其长度为d，花费为p。最后一行是两个数 s, t; 
+起点s，终点t。n和m为0时输入结束。 (1< n <=1000, 0< m <100000, s != t)
+输出格式
+输出 一行有两个数， 最短距离及其花费。
+样例输入
+
+            3 2
+            1 2 5 6
+            2 3 4 5
+            1 3
+            0 0
+
+样例输出
+
+                    9 11
+下载资料:
+输入文件
+输出文件
+参考答案
+/***************************************************************************
+版权申明：本程序为北京交通大学《算法设计与分析》课程以及教材《算法设计与问题
+求解-编程实践》的教辅材料，著作权为北京交通大学计算机与信息技术学院视觉智能
+实验室李清勇教授所有，禁止用于任何盈利性质的商业行为。未经著作权所有人允许，
+禁止进行传播和出版。
+*************************************************************************/
+
+/**************************************************************************
+解题思路：迪克斯切算法
+
+**************************************************************************/
+
+
+/**********code2*******/
+#include <bits/stdc++.h>
+using namespace std;
+
+const int N = 1e3+233;
+const int inf = 0x3f3f3f3f;
+int matd[N][N]; ///存图-路径
+int matp[N][N]; ///存图-花费
+int path[N][N]; ///记录路径数组
+int disd[N];    ///从源点s出发的最短路径
+int disp[N];    ///从源点s出发的最短花费
+int vis[N];    ///标记已经使用过的图
+int numvex,numline,n,m,s,t,a,b,d,p;
+void Dijkstra(int s,int t)
+{
+    int cur,Min;
+    memset(vis,0,sizeof(vis));
+    for(int i=1; i<=numvex; ++i)
+    {
+        disd[i]=matd[s][i];
+        disp[i]=matp[s][i];
+    }
+    disd[s]=0;
+    vis[s]=1;
+    ///开始主循环 每次求得v0到某个顶点v的最短路径 并加v到集合S中
+    for(int i=1; i<=numvex; ++i)
+    {
+        Min=inf;
+        for(int j=1; j<=numvex; ++j)
+        {
+            ///核心过程--选点
+            ///如果j顶点在V-S中,这个过程最终选出的点 应该是选出当前V-S中与S有关联边且权值最小的顶点
+            if(!vis[j] && disd[j]<=Min)
+            {
+                Min=disd[cur=j];
+            }
+        }
+        if(Min==inf)break;
+        ///选出该点后加入到合集S中
+        vis[cur]=1;
+        ///更新当前最短路径和距离
+        ///在此循环中 v为当前刚选入集合S中的点
+        ///则以点V为中间点 考察 d0v+dvw 是否小于 D[w] 如果小于 则更新
+        ///比如加进点 3 则若要考察 D[5] 是否要更新 就 判断 d(v0-v3) + d(v3-v5) 的和是否小于D[5]
+        for(int k=1; k<=numvex; ++k)
+        {
+            if(!vis[k])
+            {
+                if(disd[k] > (disd[cur]+matd[cur][k]) )
+                {
+                    disd[k]=disd[cur]+matd[cur][k];
+                    disp[k]=disp[cur]+matp[cur][k];
+                }
+                else if (disd[k]== (disd[cur]+matd[cur][k])) //如果路径相同
+                {
+                    if(disp[k]>disp[cur]+matp[cur][k])
+                    {
+                        disp[k]=disp[cur]+matp[cur][k];
+                    }
+                }
+            }
+        }
+    }
+}
+
+void init()
+{
+    for(int i=0; i<N; ++i)
+    {
+        for(int j=0; j<N; ++j)
+        {
+             if(i==j) matd[i][j]=matp[i][j]=0;
+             else matd[i][j]=matp[i][j]=inf;
+        }
+    }
+}
+
+int main()
+{
+    //freopen("in.txt","r",stdin);
+    while(scanf("%d%d",&numvex,&numline),numvex||numline)
+    {
+        init();
+        for(int i=0; i<numline; ++i)
+        {
+            scanf("%d%d%d%d",&a,&b,&d,&p);
+            if(matd[a][b]>d)
+            {
+                matd[a][b]=matd[b][a]=d;
+                matp[a][b]=matp[b][a]=p;
+            }
+            else if(matd[a][b]==d)
+            {
+                if(matp[a][b]>p)
+                {
+                    matp[a][b]=matp[b][a]=p;
+                }
+            }
+        }
+        //cin>>s>>t;
+        scanf("%d%d",&s,&t);
+        Dijkstra(s,t);
+        printf("%d %d\n",disd[t],disp[t]);
+    }
+    return 0;
+}
+
+
+
+
+
+
+
+#include<cstdio>
+#include<set>
+#include<vector>
+#include<algorithm>
+using namespace std;
+///邻接表储存边 距离，花费，所达点
+vector<pair<pair<int,int>,int> >links[1010];
+///储存所有的"距离",定义为距离和花费的pair
+///参见以下链接
+///http://www.cplusplus.com/reference/utility/pair/operators/
+pair<int,int>dis[1010];
+
+///定义"距离"的加法
+pair<int,int> operator + (const pair<int,int>&a, const pair<int,int>&b)
+{
+    return make_pair(a.first + b.first, a.second + b.second);
+}
+int main()
+{
+    for(int n,m;scanf("%d%d",&n,&m),n||m;)
+    {
+        for(int i=1;i<=n;i++)
+        {
+            links[i].clear();
+        }
+        for(int i=0;i<m;i++)
+        {
+            int a,b,d,p;
+            scanf("%d%d%d%d",&a,&b,&d,&p);
+            links[a].push_back(make_pair(make_pair(d,p), b) );
+            links[b].push_back(make_pair(make_pair(d,p), a) );
+        }
+        int s,t;scanf("%d%d",&s,&t);
+        ///初始化距离值
+        for(int i=1;i<=n;i++)
+        {
+            dis[i] = make_pair(0x3f3f3f3f,0x3f3f3f3f);
+        }
+        dis[s] = make_pair(0,0);
+        ///使用set达到类似priority_queue的功能
+        set<pair<pair<int,int>,int> >que;
+        ///插入原点
+        que.insert(make_pair(dis[s],s));
+        while(!que.empty())
+        {
+            int who = que.begin()->second;
+            pair<int,int> dist = que.begin()->first;
+            que.erase(que.begin());
+            ///如果这个点已经被使用过，就不再更新
+            if(dist != dis[who])
+                continue;
+            for(int i=0;i<links[who].size();i++)
+            {
+                int to = links[who][i].second;
+                pair<int,int> len = links[who][i].first;
+                pair<int,int> another_dis = dis[who] + len;
+                if(dis[to] > another_dis)
+                {
+                    dis[to] = another_dis;
+                    que.insert(make_pair(dis[to],to));
+                }
+            }
+        }
+        printf("%d %d\n",dis[t].first, dis[t].second);
+    }
+}
