@@ -2,6 +2,8 @@
 
 Algorithms are the soul of programs.
 
+算法是程序的灵魂。
+
 | #    | Title                                                        | Solution                                                     | Difficulty | Beats      | Types            |
 | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------- | ---------- | ---------------- |
 | 1248 | [Count Number of Nice Subarrays](https://leetcode-cn.com/problems/count-number-of-nice-subarrays/) | [C++](https://github.com/rongweihe/LeetCode/blob/master/algorithms/cpp/1248-count-num-of-nice-subarrays.md)，[Go](https://github.com/rongweihe/LeetCode/blob/master/algorithms/golang/1248-count-num-of-nice-subarrays.md) | Medium     | 100%，100% | 前缀和+hash+替换 |
