@@ -12,9 +12,14 @@
 
 基于这一观察，我们得出结论：无论何时，只要 sum%k  的值已经被放入 HashMap 中了，代表着有两个索引 i 和 j ，它们之间元素的和是 k 的整数倍就可以直接返回。
 
+下面的流程描述了数组 `nums: [2, 5, 33, 6, 7, 25, 15]` 且 `k=13` 的求解过程：
+
+![](https://cdn.jsdelivr.net/gh/rongweihe/ImageHost01/images/leetcode523.png)
+
 **复杂度分析**
 
 时间复杂度： O(n) 。仅需要遍历 nums 数组一遍。
+
 空间复杂度： O(min(n,k))。 HashMap 最多包含 min(n,k)个不同的元素。
 
 ```c++
