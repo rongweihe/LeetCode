@@ -14,7 +14,6 @@ public:
     int numSubarraysWithSum(vector<int>& A, int S) {
         int sum = 0, res = 0;
         int size = A.size();
-        std::unordered_map<int, int> mp{{0,1}};
         for (int i=0; i< size; ++i) {
             sum += A[i];
             if (mp.find(sum - S) != mp.end()) {
