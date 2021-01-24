@@ -1,4 +1,4 @@
-耗时 80 % 版：
+Beats 80 % 版：
 
 ```go
 func checkSubarraySum(nums []int, k int) bool {
@@ -22,7 +22,7 @@ func checkSubarraySum(nums []int, k int) bool {
 }
 ```
 
-耗时 100% 版：
+Beats 100% 版：
 
 ```go
 func checkSubarraySum(nums []int, k int) bool {
