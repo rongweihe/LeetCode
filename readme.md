@@ -12,9 +12,9 @@ Algorithms are the soul of programs.
 | 724  | [Find-pivot-index](https://leetcode-cn.com/problems/find-pivot-index/) | [C++](https://github.com/rongweihe/LeetCode/blob/master/algorithms/cpp/724-find-pivot-index.md)，[Go](https://github.com/rongweihe/LeetCode/blob/master/algorithms/golang/724-find-pivot-index.md) | Easy       | 100%，100% | 数组+暴力        |
 | 560  | [subarray-sum-equals-k](https://leetcode-cn.com/problems/subarray-sum-equals-k/) | [C++](https://github.com/rongweihe/LeetCode/blob/master/algorithms/cpp/560-subarray-sum-equals-k.md)，[Go](https://github.com/rongweihe/LeetCode/blob/master/algorithms/golang/560-subarray-sum-equals-k.md) | Medium     | 100%，60%  | 前缀和+hash      |
 | 523  | [Continuous Subarray Sum](https://leetcode-cn.com/problems/continuous-subarray-sum/) | [C++](https://github.com/rongweihe/LeetCode/blob/master/algorithms/cpp/523-Continuous-Subarray-Sum.md)，[Go](https://github.com/rongweihe/LeetCode/blob/master/algorithms/golang/523-continuous-subarry-sum.md) | Medium     | 100%，100% | 前缀和+hash      |
-| 461  | [Hamming Distance](https://leetcode-cn.com/problems/hamming-distance/) | [C++]()，[Go]()                                              | Eazy       | 100%，100% | 位运算           |
-| 169  | [ Majority Element](https://leetcode-cn.com/problems/majority-element/) | [C++]()，[Go]()                                              | Eazy       | 100%，100% | 数组+投票算法    |
-| 136  | [Single Number](https://leetcode-cn.com/problems/single-number/) | [C++]()，[Go]()                                              | Eazy       | 100%，100% | 位运算           |
+| 461  | [Hamming Distance](https://leetcode-cn.com/problems/hamming-distance/) | [C++](https://github.com/rongweihe/LeetCode/blob/master/algorithms/cpp/461-Hamming-Distance.md)，[Go](https://github.com/rongweihe/LeetCode/blob/master/algorithms/golang/461-Hamming-Distance.md) | Eazy       | 100%，100% | 位运算           |
+| 169  | [ Majority Element](https://leetcode-cn.com/problems/majority-element/) | [C++](https://github.com/rongweihe/LeetCode/blob/master/algorithms/cpp/169-majority-element.md)，[Go](https://github.com/rongweihe/LeetCode/blob/master/algorithms/golang/169-majority-element.md) | Eazy       | 100%，100% | 数组+投票算法    |
+| 136  | [Single Number](https://leetcode-cn.com/problems/single-number/) | [C++](https://github.com/rongweihe/LeetCode/blob/master/algorithms/cpp/136-Single-Number.md)，[Go](https://github.com/rongweihe/LeetCode/blob/master/algorithms/golang/136-Single-Number.md) | Eazy       | 100%，100% | 位运算           |
 
 
 
