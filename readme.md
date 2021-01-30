@@ -13,6 +13,8 @@ Algorithms are the soul of programs.
 | 560  | [subarray-sum-equals-k](https://leetcode-cn.com/problems/subarray-sum-equals-k/) | [C++](https://github.com/rongweihe/LeetCode/blob/master/algorithms/cpp/560-subarray-sum-equals-k.md)，[Go](https://github.com/rongweihe/LeetCode/blob/master/algorithms/golang/560-subarray-sum-equals-k.md) | Medium     | 100%，60%  | 前缀和+hash      |
 | 523  | [Continuous Subarray Sum](https://leetcode-cn.com/problems/continuous-subarray-sum/) | [C++](https://github.com/rongweihe/LeetCode/blob/master/algorithms/cpp/523-Continuous-Subarray-Sum.md)，[Go](https://github.com/rongweihe/LeetCode/blob/master/algorithms/golang/523-continuous-subarry-sum.md) | Medium     | 100%，100% | 前缀和+hash      |
 | 461  | [Hamming Distance](https://leetcode-cn.com/problems/hamming-distance/) | [C++]()，[Go]()                                              | Eazy       | 100%，100% | 位运算           |
+| 169  | [ Majority Element](https://leetcode-cn.com/problems/majority-element/) | [C++]()，[Go]()                                              | Eazy       | 100%，100% | 数组+投票算法    |
+| 136  | [Single Number](https://leetcode-cn.com/problems/single-number/) | [C++]()，[Go]()                                              | Eazy       | 100%，100% | 位运算           |
 
 
 
