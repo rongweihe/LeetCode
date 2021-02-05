@@ -1,6 +1,6 @@
 ### LeetCode Algorithm
 
-Algorithms are the soul of programs.
+ALGORITHMS ARE THE SOUL OF PROGRAMS.
 
 算法是程序的灵魂。
 
@@ -15,6 +15,5 @@ Algorithms are the soul of programs.
 | 461  | [Hamming Distance](https://leetcode-cn.com/problems/hamming-distance/) | [C++](https://github.com/rongweihe/LeetCode/blob/master/algorithms/cpp/461-Hamming-Distance.md)，[Go](https://github.com/rongweihe/LeetCode/blob/master/algorithms/golang/461-Hamming-Distance.md) | Eazy       | 100%，100% | 位运算           |
 | 169  | [ Majority Element](https://leetcode-cn.com/problems/majority-element/) | [C++](https://github.com/rongweihe/LeetCode/blob/master/algorithms/cpp/169-majority-element.md)，[Go](https://github.com/rongweihe/LeetCode/blob/master/algorithms/golang/169-majority-element.md) | Eazy       | 100%，100% | 数组+投票算法    |
 | 136  | [Single Number](https://leetcode-cn.com/problems/single-number/) | [C++](https://github.com/rongweihe/LeetCode/blob/master/algorithms/cpp/136-Single-Number.md)，[Go](https://github.com/rongweihe/LeetCode/blob/master/algorithms/golang/136-Single-Number.md) | Eazy       | 100%，100% | 位运算           |
-
 
 

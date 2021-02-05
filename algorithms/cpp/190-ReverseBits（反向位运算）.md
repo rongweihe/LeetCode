@@ -7,7 +7,7 @@ If this function is called many times, how would you optimize it?
 **题意** 
 
 给你一个32位无符号整数，求出它的反向位`（即二进制的逆序得到的整数）`
- 
+
 **思路** 
 
 ```c++
