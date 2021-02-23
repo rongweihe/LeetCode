@@ -24,4 +24,5 @@ ALGORITHMS ARE THE SOUL OF PROGRAMS.
 | 105  | [前序和中序遍历重建二叉树](https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/) | [C++](https://github.com/rongweihe/LeetCode/blob/master/algorithms/cpp/105_Construct_Binary_Tree_From_Preorder_And_Inorder_Traversel.md) | Eazy       | 二叉树+递归      |
 | 104  | [Maximum Depth of Binary Tree](https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/) | [C++](https://github.com/rongweihe/LeetCode/blob/master/algorithms/cpp/104-Maximum_depth_of_binary_tree.md)，[Go](https://github.com/rongweihe/LeetCode/blob/master/algorithms/golang/104-Maximum_depth_of_binary_tree.md) | Eazy       | 二叉树+递归      |
 | 26   | [剑指 Offer 26. 树的子结构](https://leetcode-cn.com/problems/shu-de-zi-jie-gou-lcof/) | [C++](https://github.com/rongweihe/LeetCode/blob/master/algorithms/cpp/026_Subtree_Check.md) | Eazy       | 二叉树+递归      |
+| 04   | [剑指 Offer 04. 二维数组中的查找](https://leetcode-cn.com/problems/shu-de-zi-jie-gou-lcof/) | [C++](https://github.com/rongweihe/LeetCode/blob/master/algorithms/cpp/026_Subtree_Check.md) | Eazy       | 二叉树+递归      |
 
