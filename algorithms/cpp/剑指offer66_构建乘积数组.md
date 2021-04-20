@@ -20,5 +20,24 @@ public:
         return b;
     }
 };
+//更高级解法 只用一个for循环
+class Solution {
+public:
+    vector<int> productExceptSelf(vector<int>& nums) {
+        int len = nums.size();//[1234]
+        vector<int> res(len,1);
+        int left = 1;
+        int right = 1;
+        for(int i = 0; i<len; i++){ 
+             //左半部分
+            res[i] *= left;
+            left *= nums[i];
+            // 右半部分
+            res[len - i -1] *= right;
+            right *= nums[len - i -1];
+        }
+        return res;
+    }
+};
 ```
 
