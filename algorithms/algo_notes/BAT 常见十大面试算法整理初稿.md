@@ -50,6 +50,22 @@ void BubbleSort(int a[],int len){
     }
 }
 ```
+另一种写法：
+```c++
+void bubble_sort(std::vector<int> &nums, int n) {
+	bool is_swap;
+	for (int i = 1; i < n; ++i) {
+	    is_swap = false;
+	    for (int j = 1; j < n - i + 1; ++j) {
+	        if (nums[j] < nums[j-1]) {
+	            std::swap(nums[j], nums[j-1]);
+	            is_swap = true;
+	        }
+	    }
+	    if (!is_swap) break;
+	}
+}
+```
 
 测试
 
