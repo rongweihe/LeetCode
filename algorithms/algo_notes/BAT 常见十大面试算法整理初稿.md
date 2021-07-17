@@ -79,26 +79,17 @@ int main() {
 
 
 
-## 【2】插入排序
+## 【2】插入排序 
 
 ![插入排序.PNG](https://i.loli.net/2019/04/11/5caf4c324bc0a.png)
 
 ```c++
 //插入排序：分为已排序和未排序 初始已排序区间只有一个元素 就是数组第一个 遍历未排序的每一个元素在已排序区间里找到合适的位置插入 并保证数据一直有序
-void InsertSort(int a[], int len) {
-    if (len <=1) {  return;  }
-    int minn, j;
-    for(int i=1; i<len; ++i) {
-        minn = a[i];
-        j = i-1;
-        for(; j>=0; --j) {
-            if (a[j] > minn) { a[j+1] = a[j]; } //大的元素往后移
-            else { break; }
+void InsertSort(std::vector<int> &nums,int n) {
+    for(int i = 0; i < n; ++i) {
+        for (int j = i; j > 0 && nums[j] < nums [j-1]; --j) {
+            std::swap(nums[j],nums[j-1]);
         }
-        a[j+1] = minn;//记录下次循环最小数 插入数据
-    }
-    for (int i=0; i<len; ++i) {
-        std::cout<<a[i]<<" ";
     }
 }
 ```
@@ -107,8 +98,8 @@ void InsertSort(int a[], int len) {
 
 ```c++
 int main() {
-    int a[] = {34,66,2,5,95,4,46,27};
-    InsertSort(a,sizeof(a)/sizeof(int));//cout => 2 4 5 27 34 46 66 95
+    std::vector<int> nums = {4,6,5,3,2,1};
+    insert_sort(nums,6);//cout => 1,2,3,4,5,6
     return 0;
 }
 ```
