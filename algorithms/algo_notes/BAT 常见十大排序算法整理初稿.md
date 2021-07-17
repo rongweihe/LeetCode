@@ -151,6 +151,7 @@ int main() {
 ## 【4】快排
 
 ![快速排序.png](https://i.loli.net/2019/04/11/5caf4cd1df4e5.png)
+手撕快排讲解：https://www.bilibili.com/video/BV1mE411M7SH
 
 ```c++
 //快速排序：先找到一个枢纽；在原来的元素里根据这个枢纽划分 比这个枢纽小的元素排前面；比这个枢纽大的元素排后面；两部分数据依次递归排序下去直到最终有序
@@ -184,7 +185,22 @@ int main() {
 }
 ```
 
-
+另一个写法
+```C++
+void quick_sort(std::vector<int> &nums,int l,int r) {
+    if (l + 1 >= r) return;
+    int first = l, last = r - 1 ,key = nums[first];
+    while (first < last) {
+        while (first < last && nums[last] >= key) last--;//右指针 从右向左扫描 将小于piv的放到左边
+        nums[first] = nums[last];
+        while (first < last && nums[first] <= key) first++;//左指针 从左向右扫描 将大于piv的放到右边
+        nums[last] = nums[first];
+    }
+    nums[first] = key;//更新piv
+    quick_sort(nums, l, first);//递归排序
+    quick_sort(nums, first + 1, r);
+}
+```
 
 ## 【5】归并排序
 
