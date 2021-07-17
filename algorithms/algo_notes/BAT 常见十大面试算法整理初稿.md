@@ -52,15 +52,16 @@ void BubbleSort(int a[],int len){
 ```
 另一种写法：
 ```c++
-void bubble_sort(std::vector<int> &nums, int n) {
+void BubbleSort(std::vector<int> &nums, int n) {
+	if (n <= 1) return;
 	bool is_swap;
 	for (int i = 1; i < n; ++i) {
 	    is_swap = false;
 	    for (int j = 1; j < n - i + 1; ++j) {
-	        if (nums[j] < nums[j-1]) {
-	            std::swap(nums[j], nums[j-1]);
-	            is_swap = true;
-	        }
+		if (nums[j] < nums[j-1]) {
+		    std::swap(nums[j], nums[j-1]);
+		    is_swap = true;
+		}
 	    }
 	    if (!is_swap) break;
 	}
@@ -86,6 +87,7 @@ int main() {
 ```c++
 //插入排序：分为已排序和未排序 初始已排序区间只有一个元素 就是数组第一个 遍历未排序的每一个元素在已排序区间里找到合适的位置插入 并保证数据一直有序
 void InsertSort(std::vector<int> &nums,int n) {
+    if (n <= 1) return;
     for(int i = 0; i < n; ++i) {
         for (int j = i; j > 0 && nums[j] < nums [j-1]; --j) {
             std::swap(nums[j],nums[j-1]);
@@ -99,7 +101,7 @@ void InsertSort(std::vector<int> &nums,int n) {
 ```c++
 int main() {
     std::vector<int> nums = {4,6,5,3,2,1};
-    insert_sort(nums,6);//cout => 1,2,3,4,5,6
+    InsertSort(nums,6);//cout => 1,2,3,4,5,6
     return 0;
 }
 ```
@@ -112,20 +114,18 @@ int main() {
 
 ```c++
 /*分已排序区间和未排序区间。每次会从未排序区间中找到最小的元素，将其放到已排序区间的末尾*/
-void SelectSort(int a[], int len) {
-    if( len <=1 ) {  return; }
-    int minn, tmp;
-    for(int i=0; i<len-1; ++i) {
-        minn = i;
-        for(int j=i+1; j<len; ++j) {
-            if (a[j]<a[minn]) { minn = j; }//找到最小
+void SelectSort(std::vector<int> &nums, int n) {
+    if (n <= 1) return;
+    int mid;
+    for (int i = 0; i < n - 1; ++i) {
+        mid = i;
+        for (int j = i + 1; j < n; ++j) {
+            if (nums[j] < nums[mid]) {
+                mid = j;
+            }
         }
-        if (minn != i) { swap(a[minn], a[i]); }
+        std::swap(nums[mid],nums[i]);
     }
-    for(int i=0; i<len; ++i) {
-        std::cout<<a[i]<<" ";
-    }
-    std::cout<<endl;
 }
 ```
 
@@ -133,8 +133,8 @@ void SelectSort(int a[], int len) {
 
 ```c++
 int main() {
-    int a[] = {34,66,2,5,95,4,46,27};
-    SelectSort(a,sizeof(a)/sizeof(int));//cout => 2 4 5 27 34 46 66 95
+    std::vector<int> nums = {4,6,5,3,2,1};
+    SelectSort(nums,6);//cout => 1,2,3,4,5,6
     return 0;
 }
 ```
