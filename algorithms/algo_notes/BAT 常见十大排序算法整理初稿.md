@@ -290,19 +290,22 @@ void heapify(int a[], int n, int i) {
 ###### 【7】桶排序
 
 ```c++
-/*桶排序*/
-int bucketSort(int *a,int n){
-    int bucket[maxn];
-    memset(bucket,0,sizeof(bucket));
-    for(int i=0; i<n; ++i){
-        bucket[a[i]]++;
-    }
-    for(int i=0; i<10*n; ++i){
-        while(bucket[i]){
-            bucket[i]--;
+void bucketSort(std::vector<int>& nums) {
+    if (nums.empty()) return ;
+    int low = *std::min_element(nums.begin(), nums.end());
+    int high = *std::max_element(nums.begin(), nums.end());
+    int n = high - low + 1;
+    std::vector<int> buckets(n);
+    std::vector<int> res;
+    for (auto x : nums) ++buckets[x - low];
+    for (int i = 0; i < n; ++i) { //实现了按桶下标从小到达输出
+        for (int j = 0; j < buckets[i]; ++j) { //重复的输出
+            res.push_back(i + low);
         }
     }
-    cout<<endl;
+    for (int i=0; i<res.size(); ++i) {
+        std::cout<<res[i]<<" ";
+    }
 }
 ```
 
