@@ -69,4 +69,5 @@ ALGORITHMS ARE THE SOUL OF PROGRAMS.
 | 15   | [三数之和](https://leetcode-cn.com/problems/3sum/)           | [C++]()                                                      | Medium     | 二分+双指针      |
 | 10   | https://leetcode-cn.com/problems/regular-expression-matching/ | [C++]()                                                      | Hard       | 正则表达式，递归 |
 | 04   | [剑指 Offer 04. 二维数组中的查找](https://leetcode-cn.com/problems/shu-de-zi-jie-gou-lcof/) | [C++](https://github.com/rongweihe/LeetCode/blob/master/algorithms/cpp/026_Subtree_Check.md) | Eazy       | 二叉树+递归      |
+| 04   | [4. 寻找两个正序数组的中位数](https://leetcode-cn.com/problems/median-of-two-sorted-arrays/) | [C++](https://github.com/rongweihe/LeetCode/blob/master/algorithms/cpp/0004-%E5%AF%BB%E6%89%BE%E4%B8%A4%E4%B8%AA%E6%AD%A3%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%AD%E4%BD%8D%E6%95%B0.md) | Hard       | 二分，递归       |
 
