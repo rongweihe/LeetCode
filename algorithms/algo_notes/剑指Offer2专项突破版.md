@@ -1,3 +1,7 @@
+[TOC]
+
+
+
 ## 【1】[剑指 Offer II 001. 整数除法](https://leetcode-cn.com/problems/xoh6Oh/)
 
 【思路】
@@ -250,6 +254,31 @@ public:
             }
         }
         return ret;
+    }
+};
+```
+
+
+
+## 【6】[剑指 Offer II 006. 排序数组中两个数字之和](https://leetcode-cn.com/problems/kLl5u1/)
+
+【思路】双指针
+
+【代码】
+
+```c++
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& numbers, int target) {
+        int i = 0, j = numbers.size() - 1;
+        while( i < j && numbers[i] + numbers[j] != target) {
+            if (numbers[i] + numbers[j] > target) {
+                j--;
+            } else {
+                i++;
+            }
+        }
+        return {i,j};
     }
 };
 ```
