@@ -219,3 +219,38 @@ public:
 分析：这道题可以由第一道题举一反三而来，如果数组中所有数字的第 i 位数相加之和能被 n 整除，那么出现 m 次的数的第 i 数位一定是零，否则出现 m 次的数的第 i 位数一定是1。
 
  有一个 有限状态自动机 + 位运算 算法，这个后续看下。
+
+## 【5】[318. 最大单词长度乘积](https://leetcode-cn.com/problems/maximum-product-of-word-lengths/)
+
+【思路】
+
+C++/位运算/巧妙的使用整数26位比特存储字母；用整数的二进制数位记录字符串中出现的字符；
+
+int 整型数二进制有 32 位，题目要求只要 26 位就可以表示出一个字符串中出现的字符，因此可以用一个 int 型整数记录某个字符字符串出现的字符，如果字符串中包含 ‘a’ 则这个整数最右边数位 1 如果包含 ‘b’ 则字符串中倒数第二位数位 1，以此类推，这样的好处就是在预处理的时候就能快速判断两个数是否有相同的位数（位运算&）
+
+时间复杂度  O(n*n)
+
+```c++
+class Solution {
+public:
+    int maxProduct(vector<string>& words) {
+        std::vector<int> flags(words.size());
+        for (int i = 0; i < words.size(); ++i) {
+            for (char &c : words[i]) {
+                flags[i] |= (1 << (c - 'a'));
+            }
+        }
+        int ret = 0;
+        for (int i = 0; i < words.size(); ++i) {
+            for (int j = i + 1; j < words.size(); ++j) {
+                if ((flags[i] & flags[j]) == 0) {
+                    int prod = words[i].size()*words[j].size();
+                    ret = max(ret, prod);
+                }
+            }
+        }
+        return ret;
+    }
+};
+```
+
