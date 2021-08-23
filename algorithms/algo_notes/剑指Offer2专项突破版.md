@@ -506,3 +506,56 @@ public:
 };
 ```
 
+
+
+# 【13】[剑指 Offer II 013. 二维子矩阵的和](https://leetcode-cn.com/problems/O4NDxx/)
+
+【思路】
+
+也是前缀和的思想。
+
+指定矩阵的和可以使用左上角都为[0][0]的矩阵相加减而来：
+
+![2021-08-17_15-20-39.png](https://pic.leetcode-cn.com/1629184847-TaumJj-2021-08-17_15-20-39.png)
+
+大框的和 =  2。
+
+换算成代码就是：
+
+如果输入矩阵的行数和列数分别为 m 和 n，那么辅助矩阵 sum 的行数和列数分别为 m + 1 和 n + 1,这样做是为了简化代码逻辑。在用公式
+
+```c
+ret = sum[r2][c2] - sum[r2][c1 - 1] - sum[r1 - 1][c2] + sum[r1 - 1][c1 - 1]
+的时候，由于 r1 和 c1 都有可能为 0，所以 r1 - 1 和 c1 - 1 可能为负数，若在矩阵最上面和最左边增加一列就可以避免出现这种情况。
+```
+
+函数 sumRegion 只是利用辅助矩阵做了加减，所以时间复杂度为 O(1)。总的时间复杂度为 O(mn)，空间复杂度为 O(mn)。【代码】
+
+```c++
+class NumMatrix {
+public:
+    std::vector<std::vector<int>> sum;
+    NumMatrix(std::vector<std::vector<int>>& matrix) {
+        int n = matrix.size();//行
+        int m = matrix[0].size();//列
+        sum.resize(n + 1,std::vector<int>(m + 1, 0));
+        for(int i = 0; i < n; ++i) {
+            int row_sum = 0;
+            for (int j = 0; j < m; ++j) {
+                row_sum += matrix[i][j];
+                sum[i + 1][j + 1] = sum[i][j + 1] + row_sum;
+            }
+        }
+    }
+    int sumRegion(int row1, int col1, int row2, int col2) {
+        return sum[row2 + 1][col2 + 1] - sum[row2 + 1][col1]
+            - sum[row1][col2 + 1] + sum[row1][col1];
+    }
+};
+/**
+ * Your NumMatrix object will be instantiated and called as such:
+ * NumMatrix* obj = new NumMatrix(matrix);
+ * int param_1 = obj->sumRegion(row1,col1,row2,col2);
+ */
+```
+
