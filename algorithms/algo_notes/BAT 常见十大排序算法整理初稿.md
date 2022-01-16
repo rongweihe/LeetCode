@@ -108,7 +108,7 @@ int main() {
 
 ## 【3】选择排序
 
-![选择排序.PNG](https://i.loli.net/2019/04/11/5caf4c4ee3990.png)
+![](https://img-blog.csdnimg.cn/img_convert/89ac014a09d70efa94bf3b525d7cd60a.png)
 
 ```c++
 /*分已排序区间和未排序区间。每次会从未排序区间中找到最小的元素，将其放到已排序区间的末尾*/
@@ -148,7 +148,8 @@ int main() {
 
 ## 【4】快排
 
-![快速排序.png](https://i.loli.net/2019/04/11/5caf4cd1df4e5.png)
+![](https://img-blog.csdnimg.cn/img_convert/b9b005a3f17299c44e8acb94cfc2ccb2.png)
+
 手撕快排讲解：https://www.bilibili.com/video/BV1mE411M7SH
 
 ```c++
@@ -185,16 +186,16 @@ int main() {
 
 另一个写法
 ```C++
-void quick_sort(std::vector<int> &nums,int l,int r) {
+void QuickSort(std::vector<int> &nums,int l,int r) {
     if (l + 1 >= r) return;
-    int first = l, last = r - 1 ,key = nums[first];
+    int first = l, last = r - 1 ,piv = nums[first];
     while (first < last) {
-        while (first < last && nums[last] >= key) last--;//右指针 从右向左扫描 将小于piv的放到左边
+        while (first < last && nums[last] >= piv) last--;//右指针 从右向左扫描 将小于piv的放到左边
         nums[first] = nums[last];
-        while (first < last && nums[first] <= key) first++;//左指针 从左向右扫描 将大于piv的放到右边
+        while (first < last && nums[first] <= piv) first++;//左指针 从左向右扫描 将大于piv的放到右边
         nums[last] = nums[first];
     }
-    nums[first] = key;//更新piv
+    nums[first] = piv;//更新piv
     quick_sort(nums, l, first);//递归排序
     quick_sort(nums, first + 1, r);
 }
@@ -202,7 +203,8 @@ void quick_sort(std::vector<int> &nums,int l,int r) {
 
 ## 【5】归并排序
 
-![归并排序.PNG](https://i.loli.net/2019/04/11/5caf4d1e42eb8.png)
+![](https://img-blog.csdnimg.cn/img_convert/f13bf55cb8c94e7d3d6fbc9ca0271f94.png)
+
 
 ```c++
 /*
