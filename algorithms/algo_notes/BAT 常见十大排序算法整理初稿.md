@@ -270,21 +270,39 @@ int main() {
 优点：O(nlogn)，原地排序，最大的特点：每个节点的值大于等于(或小于等于)其子树节点
 缺点：相比于快排，堆排序数据访问的方式没有快排友好；数据的交换次数要多于快排。
 */
-void buildHeap(int a[], int n) {
-    for(int i=n/2; i>=1; --i) {
-    heapify(a, n, i);
+
+class Solution {
+public:
+    vector<int> sortArray(vector<int>& nums) {
+        HeapSort(nums);
+        return nums;
     }
-}
-void heapify(int a[], int n, int i) {
-  while (1) {
-   		int maxPos = i;
-   		if (i*2 <=n && a[i] < a[i*2]) { maxPos = i*2; }
-   		if (i*2+1 <=n && a[maxPos] < a[i*2+1]) { maxPos = i*2+1; }
-   		if (maxPos == i) break;
-   		std::swap(a[i], a[maxPos]);
-   		i = maxPos;
-   }
-}
+    void HeapSort(std::vector<int>& nums) {
+        int len = nums.size() - 1;
+        buildHeap(nums, len);
+        int k = len;
+        while (k > 0) {
+            std::swap(nums[0],nums[k]);//将堆顶交换
+            k--;
+            heapify(nums,k,0);//堆化
+        }
+    }
+    void buildHeap(std::vector<int>& nums, int len) {
+        for(int i = len/2; i >= 0; --i) {
+            heapify(nums, len, i);
+        }//对于完全二叉树来说，下标从 n/2+1 -> n 的节点都是叶子节点
+    }
+    void heapify(std::vector<int>& nums, int len, int i) {
+        while (1) {
+            int maxPos = i;
+            if (i*2 + 1 <= len && nums[i] < nums[i*2 + 1]) { maxPos = i*2 + 1; }
+            if (i*2 + 2 <= len && nums[maxPos] < nums[i*2 + 2]) { maxPos = i*2 + 2; }
+            if (maxPos == i) break;
+            std::swap(nums[i], nums[maxPos]);
+            i = maxPos;
+        }
+    }
+};
 ```
 
 ###### 【7】桶排序
