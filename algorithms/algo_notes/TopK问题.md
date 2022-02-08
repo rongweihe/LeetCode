@@ -72,3 +72,47 @@ public:
     }
 };
 ```
+## 215.第K大元素 https://leetcode-cn.com/problems/kth-largest-element-in-an-array/
+
+```c++
+int findKthLargest(vector<int>&nums, int k) {
+  priority_queue<int, vector<int>, greater<int>>Q;
+  for(auto& n : nums) {
+    Q.push(n);
+    if(Q.size() > k) Q.pop();
+  }//建立一个大根堆，做 k - 1k−1 次删除操作后堆顶元素就是我们要找的答案
+  return Q.top();
+}
+//手写最大堆排序
+class Solution {
+public:
+    void makeHeapify(std::vector<int>&nums, int i, int heap_size) {
+        int l = i * 2 + 1, r = i * 2 + 2, largest = i;
+        if (l < heap_size && nums[l] > nums[largest]) {
+            largest = l;
+        }
+        if (r < heap_size && nums[r] > nums[largest]) {
+            largest = r;
+        }
+        if (largest != i) {
+            swap(nums[i], nums[largest]);
+            makeHeapify(nums, largest, heap_size);
+        }
+    }
+    void buildMaxHeap(std::vector<int>&nums, int heap_size) {
+        for (int i = heap_size / 2; i >= 0; --i) {
+            makeHeapify(nums, i, heap_size);
+        }//从叶子节点开始堆化
+    }
+    int findKthLargest(vector<int>&nums, int k) {
+        int heap_size = nums.size();
+        buildMaxHeap(nums, heap_size);
+        for (int i = nums.size() - 1; i >= nums.size() - k + 1; --i) {
+            swap(nums[0], nums[i]);
+            --heap_size;
+            makeHeapify(nums, 0, heap_size);
+        }
+        return nums[0];
+    }
+};
+```
