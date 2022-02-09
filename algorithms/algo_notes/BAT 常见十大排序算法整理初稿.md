@@ -186,18 +186,19 @@ int main() {
 
 另一个写法
 ```C++
-void QuickSort(std::vector<int> &nums,int l,int r) {
-    if (l + 1 >= r) return;
-    int first = l, last = r - 1 ,piv = nums[first];
-    while (first < last) {
-        while (first < last && nums[last] >= piv) last--;//右指针 从右向左扫描 将小于piv的放到左边
-        nums[first] = nums[last];
-        while (first < last && nums[first] <= piv) first++;//左指针 从左向右扫描 将大于piv的放到右边
-        nums[last] = nums[first];
+void QuickSort(std::vector<int>& a, int left, int right) {
+    if (left >= right) return;
+    int piv = a[left];
+    int l = left, r = right;
+    while (l < r) {
+        while(l < r && a[r] >= piv) --r;//从右向左找到第一个小于x的 将小于piv的放到左边
+        if (l < r) a[l++] = a[r];
+        while (l < r && a[l] <= piv) ++l;//从左向右找第一个大于x的数 将大于piv的放到右边
+        if (l < r) a[r--] = a[l];
     }
-    nums[first] = piv;//更新piv
-    quick_sort(nums, l, first);//递归排序
-    quick_sort(nums, first + 1, r);
+    a[l] = piv;//更新piv
+    quickSort(a, left, l - 1);//递归排序
+    quickSort(a, l + 1, right);
 }
 ```
 
@@ -244,6 +245,32 @@ void mergeSort(int a[],int L,int R) {
     mergeSort(a,L,mid);
     mergeSort(a,mid+1,R);
     mergeCount(a,L,mid,R);
+}
+```
+
+另一种写法
+```c++ 
+void mergeCount(std::vector<int>& a, int left, int mid, int right) {
+    std::vector<int>tmp(left+mid+right, 0);
+    int i = left;
+    int j = mid + 1;
+    int k = 0;
+    while (i <= mid && j <= right) {
+        if (a[i] < a[j]) tmp[k++] = a[i++];
+        else tmp[k++] = a[j++];
+    }
+    while (i <= mid) tmp[k++] = a[i++];
+    while (j <= right) tmp[k++] = a[j++];
+    for (int p = 0; p < k; ++p) {
+        a[left + p] = tmp[p];
+    }
+}
+void mergeSort(std::vector<int>& a, int left, int right) {
+    if (left >= right) return;
+    int mid = left + (right - left) / 2;
+    mergeSort(a, left, mid);
+    mergeSort(a, mid + 1, right);
+    mergeCount(a, left, mid, right);
 }
 ```
 
